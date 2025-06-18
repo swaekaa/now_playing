@@ -1,0 +1,28 @@
+{
+  "name": "Now Playing - YouTube Tracker",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Tracks currently playing YouTube video per tab",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "scripting",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "*://www.youtube.com/*"
+  ]
+}
